@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mimi · 原生 JavaScript 接入示例</title>
+  <style>
+    :root{font-family:system-ui,sans-serif;color:#35432e;background:#f5f2e9}*{box-sizing:border-box}body{max-width:740px;padding:48px 24px;margin:auto}h1{font-size:28px}p{line-height:1.8;color:#737d66}.panel{padding:24px;background:#fffcf5;border:1px solid #daddce;border-radius:16px}.avatars{display:flex;align-items:center;justify-content:center;gap:32px;min-height:170px}.controls{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}select,button{font:inherit;color:inherit;background:#f8f8ee;border:1px solid #c5ceba;border-radius:7px;padding:10px}button{cursor:pointer}a{color:inherit}#status{min-height:24px}#png{max-width:230px;background:repeating-conic-gradient(#eeede5 0 25%,#fff 0 50%) 0/18px 18px;border-radius:10px;margin-top:16px}button:focus-visible,select:focus-visible{outline:2px solid #698052;outline-offset:3px}
+  </style>
+</head>
+<body>
+  <h1>一只头像，两处使用。</h1>
+  <p>这个示例直接加载下载包内的 JS 文件，无需安装依赖。左边可以互动，右边是列表中的静态小头像。</p>
+  <div class="panel">
+    <div class="avatars"><div id="main-avatar"></div><div id="small-avatar"></div></div>
+    <div class="controls"><select id="cat" aria-label="选择猫咪"></select><select id="state" aria-label="头像状态"><option value="default">好奇</option><option value="working">工作中</option><option value="sleeping">休息中</option></select><button id="pause" aria-pressed="false">暂停</button><button id="save">生成 PNG</button></div>
+    <p id="status" role="status">点击大头像，和小猫打个招呼。</p>
+    <a id="download" hidden download="mimi.png">下载透明 PNG</a><br><img id="png" hidden alt="导出的透明猫咪头像">
+  </div>
+  <script src="../dist/mimi-cat-avatars.js"></script>
+  <script>
+    const select = document.querySelector('#cat');
+    for (const cat of MimiAvatars.cats) select.add(new Option(cat.name, cat.id));
+    let large, small, imageURL, paused = false;
+    try {
+      large = MimiAvatars.createAvatar(document.querySelector('#main-avatar'), { cat: select.value, size: 160 });
+      small = MimiAvatars.createAvatar(document.querySelector('#small-avatar'), { cat: select.value, size: 48, paused: true, interactive: false });
+      select.addEventListener('change', () => { large.update({ cat: select.value }); small.update({ cat: select.value }); });
+      document.querySelector('#state').addEventListener('change', event => {
+        large.update({ state: event.target.value }); small.update({ state: event.target.value });
+      });
+      document.querySelector('#pause').addEventListener('click', event => {
+        paused = !paused; large.update({ paused });
+        event.target.textContent = paused ? '继续' : '暂停'; event.target.setAttribute('aria-pressed', String(paused));
+      });
+      document.querySelector('#save').addEventListener('click', async () => {
+        try {
+          const blob = await large.exportPNG({ size: 1024 });
+          if (imageURL) URL.revokeObjectURL(imageURL); imageURL = URL.createObjectURL(blob);
+          const link = document.querySelector('#download'), image = document.querySelector('#png');
+          link.href = imageURL; link.download = `mimi-${select.value}.png`; link.hidden = false;
+          image.src = imageURL; image.hidden = false;
+          document.querySelector('#status').textContent = '头像已生成，点击下载链接保存。';
+        } catch (error) { document.querySelector('#status').textContent = error.message; }
+      });
+    } catch (error) { document.querySelector('#status').textContent = error.message; }
+    window.addEventListener('pagehide', event => {
+      if (event.persisted) return;
+      large?.destroy(); small?.destroy(); if (imageURL) URL.revokeObjectURL(imageURL);
+    });
+  </script>
+</body>
+</html>

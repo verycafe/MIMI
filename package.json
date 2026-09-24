@@ -1,0 +1,28 @@
+{
+  "name": "mimi-cat-avatars",
+  "version": "0.1.0",
+  "description": "Eight procedural paper cat avatars for the web, with a vanilla JavaScript API and React component.",
+  "type": "module",
+  "main": "./dist/mimi-cat-avatars.mjs",
+  "module": "./dist/mimi-cat-avatars.mjs",
+  "types": "./dist/mimi-cat-avatars.d.mts",
+  "exports": {
+    ".": { "types": "./dist/mimi-cat-avatars.d.mts", "import": "./dist/mimi-cat-avatars.mjs", "default": "./dist/mimi-cat-avatars.mjs" },
+    "./react": { "types": "./dist/react.d.mts", "import": "./dist/react.mjs", "default": "./dist/react.mjs" },
+    "./browser": "./dist/mimi-cat-avatars.js",
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "examples", "README.md", "LICENSE", "NOTICE.md"],
+  "sideEffects": ["./dist/mimi-cat-avatars.js"],
+  "peerDependencies": { "react": ">=18" },
+  "peerDependenciesMeta": { "react": { "optional": true } },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/verycafe/MIMI.git"
+  },
+  "homepage": "https://github.com/verycafe/MIMI#readme",
+  "scripts": {
+    "build": "node build-package.mjs && node build-single-file.mjs"
+  }
+}

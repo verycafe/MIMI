@@ -1,0 +1,11 @@
+.DS_Store
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+
+# Reproducible build staging and local migration records.
+work/mimi-distribution-stage/
+work/migration-manifest.json
+work/previous-canvas-version/generated/

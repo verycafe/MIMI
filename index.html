@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Mimi，一组有表情、会回应的低多边形猫咪头像。选择你的小猫，体验真实界面里的互动，并接入 JavaScript 或 React 项目。">
+  <title>Mimi · 给界面，一点猫的性格</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%231e1e20' d='M10 27L8 7Q9 2 24 16Q32 13 40 16Q55 2 56 7L54 27C67 61 0 61 10 27Z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#choose-cat">跳到猫咪选择</a>
+  <div class="studio">
+    <header class="masthead">
+      <a class="brand" href="#" aria-label="Mimi 首页"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 14 4 4q1-2 8 4 4-1 8 0 7-6 8-4l-1 10c8 19-30 19-22 0Z"/><path class="eyes" d="M11 17v2m10-2v2"/></svg>mimi<span class="brand-note">一点猫的性格</span></a>
+      <nav aria-label="主导航"><a href="#choose-cat">选一只猫</a><a href="#in-action">使用效果</a><a href="https://github.com/verycafe/MIMI" class="nav-install" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></nav>
+    </header>
+
+    <main>
+      <section class="playground" aria-labelledby="title">
+        <div class="intro">
+          <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> 八只小猫，随时上线</p>
+          <h1 id="title">给界面，<br>一点<span class="soft-word">猫的性格。</span></h1>
+          <p class="hero-description">有表情，会回应。<br>把一只纸感小猫，放进你的下一个产品。</p>
+          <div class="hero-actions"><a class="button primary-button" href="https://github.com/verycafe/MIMI" target="_blank" rel="noopener noreferrer">前往 GitHub <span aria-hidden="true">↗</span></a><a class="text-link" href="#in-action">看看使用效果 <span aria-hidden="true">↓</span></a></div>
+          <div class="selected-cat-info">
+            <div class="selected-cat-heading"><h2 id="cat-name">黑猫</h2><span id="cat-english">MIDNIGHT BLACK</span></div>
+            <p id="cat-description">从耳尖到下巴，都是安静的炭黑。两颗金绿色眼睛亮着。</p>
+          </div>
+        </div>
+
+        <div class="hero-preview">
+          <div class="portrait" id="portrait">
+            <span class="portrait-label">认识一下，你的小猫</span>
+            <button class="icon-button pause-button" id="pause" aria-label="暂停动画" aria-pressed="false" title="暂停动画"><svg viewBox="0 0 20 20" aria-hidden="true"><path id="pause-icon" d="M7 5v10M13 5v10"/></svg></button>
+            <div class="canvas-wrap" id="canvas-wrap">
+              <div class="ground-shadow" id="ground-shadow"></div>
+              <div id="avatar-mount" aria-label="当前选中的猫咪互动头像"></div>
+              <div class="sleep-marks" id="sleep-marks" aria-hidden="true"><i>z</i><i>z</i><i>z</i></div>
+              <div class="pet-heart" id="pet-heart" aria-hidden="true">♡</div>
+            </div>
+            <div class="portrait-caption"><span class="status-dot" aria-hidden="true"></span><span id="mood-label" role="status" aria-live="polite">正在好奇地看着你</span></div>
+            <span class="gesture-hint">移动鼠标 · 轻触互动</span>
+          </div>
+          <div class="controls" aria-label="猫咪动作">
+            <div class="segmented" role="group" aria-label="心情">
+              <button class="selected" data-state="default" aria-pressed="true">好奇</button><button data-state="working" aria-pressed="false">开心</button><button data-state="sleeping" aria-pressed="false">困困</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="collection" id="choose-cat" aria-labelledby="collection-title">
+        <div class="section-heading collection-heading"><h2 id="collection-title">挑一只，合你眼缘的。</h2><p>各有模样，各有性格。</p></div>
+        <div class="cat-gallery" id="cat-gallery" role="group" aria-label="选择猫咪"></div>
+      </section>
+
+      <section class="usage-section section-block" id="in-action" aria-labelledby="usage-title">
+        <div class="section-heading"><div><span class="section-index">01 / 使用效果</span><h2 id="usage-title">在你的产品里，刚刚好。</h2></div><p>换一只猫，看看它在不同场景里的样子。</p></div>
+        <div class="demo-grid">
+          <article class="demo-card assistant-card">
+            <div class="demo-card-heading"><h3>像一个小队友。</h3><span>助手列表</span></div>
+            <div class="assistant-demo" id="assistant-demo">
+              <div class="demo-window-bar"><span class="window-title">我的工作台</span><span class="subtle-count">3 位助手</span></div>
+              <div class="assistant-row">
+                <div class="demo-avatar assistant-avatar" data-demo-avatar="assistant-idle" aria-label="待命中的猫咪"></div>
+                <div class="assistant-copy"><h4><span data-selected-cat>黑猫</span> · 灵感助手</h4><p>准备接住你的下一个想法</p></div><span class="state-badge idle"><i aria-hidden="true"></i>待命</span>
+              </div>
+              <div class="assistant-row">
+                <div class="demo-avatar assistant-avatar" data-demo-avatar="assistant-working" aria-label="工作中的猫咪"></div>
+                <div class="assistant-copy"><h4><span data-selected-cat>黑猫</span> · 写作伙伴</h4><p>正在把零散想法整理成文字</p></div><span class="state-badge working"><i aria-hidden="true"></i>工作中</span>
+              </div>
+              <div class="assistant-row">
+                <div class="demo-avatar assistant-avatar" data-demo-avatar="assistant-sleeping" aria-label="休息中的猫咪"></div>
+                <div class="assistant-copy"><h4><span data-selected-cat>黑猫</span> · 资料管家</h4><p>事情做完了，先打一个盹</p></div><span class="state-badge sleeping"><i aria-hidden="true"></i>休息中</span>
+              </div>
+            </div>
+            <p class="demo-note">一个小表情，让工作状态一眼可见。</p>
+          </article>
+
+          <article class="demo-card chat-card">
+            <div class="demo-card-heading"><h3>也很会接话。</h3><span>对话助手</span></div>
+            <div class="chat-demo">
+              <div class="chat-header"><div class="demo-avatar chat-avatar" data-demo-avatar="chat" aria-label="聊天助手猫咪"></div><div><h4><span data-selected-cat>黑猫</span> · 聊天伙伴</h4><p id="chat-status" aria-live="off">随时愿意听你说</p></div><span class="chat-online" aria-label="在线"></span></div>
+              <div class="chat-messages"><p class="chat-bubble user-bubble">帮我整理一下今天的安排。</p><div class="assistant-message"><span class="message-author">Mimi</span><p class="chat-bubble assistant-bubble" id="chat-answer" aria-live="off">上午先完成最重要的任务，下午处理消息，也别忘了休息。</p></div></div>
+              <div class="chat-footer"><span>对话效果演示</span><span>自动循环</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="size-preview" aria-labelledby="size-title"><div class="size-intro"><h3 id="size-title">小头像，也有性格。</h3><p>从消息列表，到个人主页。</p></div><div class="size-samples">
+          <div class="size-sample"><div class="size-avatar-space"><div class="demo-avatar" data-demo-size="32" aria-label="32 像素猫咪头像"></div></div><span>32 px</span></div>
+          <div class="size-sample"><div class="size-avatar-space"><div class="demo-avatar" data-demo-size="48" aria-label="48 像素猫咪头像"></div></div><span>48 px</span></div>
+          <div class="size-sample"><div class="size-avatar-space"><div class="demo-avatar" data-demo-size="64" aria-label="64 像素猫咪头像"></div></div><span>64 px</span></div>
+          <div class="size-sample"><div class="size-avatar-space"><div class="demo-avatar" data-demo-size="96" aria-label="96 像素猫咪头像"></div></div><span>96 px</span></div>
+        </div></div>
+      </section>
+
+      <section class="integration-section section-block" id="integrate" aria-labelledby="integration-title">
+        <div class="section-heading"><div><span class="section-index">02 / 带回你的产品</span><h2 id="integration-title">一小段代码，一个新伙伴。</h2></div><p>JavaScript 与 React，选你熟悉的方式。</p></div>
+        <div class="integration-grid">
+          <div class="integration-info"><h3>从 GitHub 开始。</h3><p>把喜欢的小猫带进你的产品。前往项目仓库，了解源码、接入方式与后续更新。</p>
+            <a class="repository-link" href="https://github.com/verycafe/MIMI" target="_blank" rel="noopener noreferrer" aria-label="前往 GitHub：verycafe/MIMI，在新标签页打开">
+              <svg class="repository-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.4-1.22.71-1.5-2.5-.28-5.12-1.25-5.12-5.56 0-1.23.44-2.24 1.16-3.03-.12-.29-.5-1.43.11-2.98 0 0 .95-.3 3.08 1.16a10.74 10.74 0 0 1 5.6 0c2.14-1.46 3.08-1.16 3.08-1.16.62 1.55.23 2.69.12 2.98.72.79 1.15 1.8 1.15 3.03 0 4.32-2.63 5.27-5.14 5.55.4.35.76 1.03.76 2.08v3.11c0 .3.2.65.78.54A11.2 11.2 0 0 0 12 .8Z"/></svg>
+              <span class="repository-copy"><strong>verycafe / MIMI</strong><span>前往 GitHub</span></span><span class="repository-arrow" aria-hidden="true">↗</span>
+            </a>
+            <p class="repository-note">选好一只猫，右侧就是它的接入示例。</p>
+          </div>
+          <div class="code-card"><div class="code-toolbar"><div class="code-tabs" role="tablist" aria-label="接入方式"><button id="tab-javascript" class="selected" role="tab" data-code-tab="javascript" aria-selected="true" aria-controls="integration-panel">JavaScript</button><button id="tab-react" role="tab" data-code-tab="react" aria-selected="false" aria-controls="integration-panel" tabindex="-1">React</button></div><button class="copy-button" id="copy-code" aria-label="复制接入代码"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="7" width="9" height="10" rx="1.5"/><path d="M12 7V3H3v10h4"/></svg><span>复制代码</span></button></div><div id="integration-panel" role="tabpanel" aria-labelledby="tab-javascript" tabindex="0"><pre><code id="integration-code"></code></pre></div><div class="code-caption"><span class="status-dot" aria-hidden="true"></span> 示例随当前选择的猫咪更新</div></div>
+        </div>
+        <div class="parameters"><h3>让它配合你的界面。</h3><div class="parameter-table-wrap"><table><thead><tr><th scope="col">参数</th><th scope="col">作用</th><th scope="col">说明</th></tr></thead><tbody><tr><th scope="row"><code>cat</code></th><td>选择猫咪</td><td>八种固定造型，接入示例中已填入当前选择</td></tr><tr><th scope="row"><code>state</code></th><td>表情与动作</td><td><code>default</code> 好奇 · <code>working</code> 开心 · <code>sleeping</code> 困困</td></tr><tr><th scope="row"><code>size</code></th><td>头像尺寸</td><td>以像素为单位，按界面需要调整</td></tr><tr><th scope="row"><code>paused</code></th><td>暂停动画</td><td>暂停时保留当前画面</td></tr><tr><th scope="row"><code>interactive</code></th><td>鼠标与轻触互动</td><td>控制是否跟随指针、回应轻触</td></tr><tr><th scope="row"><code>speed</code></th><td>动作速度</td><td>调整动画节奏</td></tr></tbody></table></div></div>
+      </section>
+    </main>
+    <footer><a class="brand footer-brand" href="#">mimi</a><p>小小一只，陪你的界面生动起来。</p><a href="https://github.com/verycafe/MIMI" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <noscript>请启用 JavaScript，Mimi 的形体和动画由浏览器实时绘制。</noscript>
+  <script src="dist/mimi-cat-avatars.js"></script><script src="app.js"></script>
+</body>
+</html>
