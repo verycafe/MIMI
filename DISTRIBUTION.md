@@ -1,6 +1,6 @@
 # Mimi Cat Avatars · 0.1.0
 
-八只由代码绘制的低多边形纸猫，提供原生 JavaScript API、React 组件、TypeScript 类型和透明 PNG 导出。每只猫有固定的形体、毛色与花纹；应用通过 `state` 控制它的状态。
+八只由代码绘制的低多边形纸猫，提供本地 JavaScript 函数、React 组件、TypeScript 类型和透明 PNG 导出。每只猫有固定的形体、毛色与花纹；应用通过 `state` 控制它的状态。全部在浏览器内运行，无需后端接口或 API Key。
 
 **当前是本地分发版本，包名尚未注册或发布到 npm。** 使用随包提供的文件或安装本地生成的 `.tgz`，不要把远程 npm 安装命令当作当前可用入口。
 
@@ -19,7 +19,7 @@ npm install ./mimi-cat-avatars-0.1.0.tgz
 | 文件 / 入口 | 用途 |
 | --- | --- |
 | `dist/mimi-cat-avatars.js` | 浏览器脚本，提供全局 `MimiAvatars` |
-| `dist/mimi-cat-avatars.mjs` / `mimi-cat-avatars` | ESM，导出 `createAvatar`、`cats` 和默认 API 对象 |
+| `dist/mimi-cat-avatars.mjs` / `mimi-cat-avatars` | ESM，导出 `createAvatar`、`cats` 和默认对象 |
 | `dist/react.mjs` / `mimi-cat-avatars/react` | React `CatAvatar` 组件 |
 | `dist/*.d.mts` | 原生与 React 类型声明，由 package exports 指向 |
 | `examples/vanilla.html` | 原生 HTML 接入示例 |
@@ -160,8 +160,6 @@ document.querySelector('#downloads').appendChild(link);
 - 同一模块实例只能挂载到同一个 `document`。在 iframe 中使用时，应在该 frame 内单独加载模块。
 - 不依赖外部图片、字体、3D 模型、HDR 或远程图像服务；猫咪形体、花纹、纸张纹理与阴影均由代码绘制。
 
-## 来源与当前状态
+## 许可
 
-动画引擎改编自 Jakub Antalik 的 [bot-avatars](https://github.com/Jakubantalik/Libraries.dev/tree/main/packages/bot-avatars)。分发时保留包内 `LICENSE`、`NOTICE.md` 和脚本中的许可证信息。猫咪形体、固定花纹、材质与接入层在本项目中实现。
-
-当前版本已完成本地打包，**未运行应用测试、语法检查、浏览器检查或截图验收**。文档描述已实现的代码接口，不代表兼容性和运行效果已完成验证。
+[MIT](LICENSE)。分发时保留包内 `LICENSE`、`NOTICE.md` 和脚本中的许可证信息。

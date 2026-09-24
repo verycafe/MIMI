@@ -4,6 +4,8 @@ node_modules/
 .env.*
 !.env.example
 *.log
+site/
+.wrangler/
 
 # Reproducible build staging and local migration records.
 work/mimi-distribution-stage/

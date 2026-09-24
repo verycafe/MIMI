@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/verycafe/MIMI#readme",
   "scripts": {
-    "build": "node build-package.mjs && node build-single-file.mjs"
+    "build": "node build-package.mjs && node build-single-file.mjs",
+    "build:site": "node build-site.mjs"
   }
 }
