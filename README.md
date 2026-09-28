@@ -8,7 +8,9 @@
 
 [快速开始](#快速开始) · [接入文档](DISTRIBUTION.md) · [部署指南](DEPLOYMENT.md)
 
-<img src="docs/images/mimi-overview.jpg" alt="Mimi 首页：黑猫互动头像与八只猫咪选择" width="640">
+<a href="docs/images/mimi-overview.png">
+  <img src="docs/images/mimi-overview.png" alt="Mimi 首页：黑猫互动头像与八只猫咪选择，点击查看高清原图" width="1280">
+</a>
 
 </div>
 
@@ -19,7 +21,9 @@
 - **直接接入**：原生 JavaScript、React 组件、TypeScript 类型，也可用本地函数导出透明 PNG。
 
 <p align="center">
-  <img src="docs/images/mimi-in-action.jpg" alt="猫咪头像在助手列表、聊天窗口和不同尺寸中的实际效果" width="640">
+  <a href="docs/images/mimi-in-action.png">
+    <img src="docs/images/mimi-in-action.png" alt="猫咪头像在助手列表、聊天窗口和不同尺寸中的实际效果，点击查看高清原图" width="1280">
+  </a>
 </p>
 
 ## 快速开始
